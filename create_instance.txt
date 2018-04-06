@@ -1,0 +1,9 @@
+1) Go to VM Instances page in GCP
+2) Choose Ubuntu 16.04 LTS (or anything else)
+3) Choose the Instance specifications
+4) Check the boxes for HTTP and HTTPS traffic
+5) Click the Management, disks, networking, SSH keys dropdown and set preemptibility to On (Like AWS Spot instances)
+6) If you posses a disk, go to the Disks tab and just select the required disk
+7) If you do not posses a disk, follow the guide in create_disk.txt
+8) Hit the "create" button
+9) Open the terminal in the browser (hassle free) and enjoy!
