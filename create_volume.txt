@@ -2,4 +2,6 @@
 2) Since you have created a new disk, we need to format and add a File System. Run the following command
 sudo mkfs.ext4 -m 0 -F -E lazy_itable_init=0,lazy_journal_init=0,discard /dev/[DEVICE_ID]
 3) Follow steps 5,6,7 from this link
-https://cloud.google.com/compute/docs/disks/add-persistent-disk#create_disk 
+https://cloud.google.com/compute/docs/disks/add-persistent-disk#create_disk
+4) sudo chmod 777 -R mount/
+Use the above command to set all permissions so that you don't have to use sudo anywhere
