@@ -1,6 +1,8 @@
 # Copy the files tensorflow_setup.sh and requirements.txt to ~ and then run the script
 
 # Essential Packages
+sudo apt-get update
+sudo apt-get install git
 sudo apt install unzip
 sudo apt install python-pip
 sudo apt install python3-pip 

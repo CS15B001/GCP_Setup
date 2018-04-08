@@ -10,7 +10,7 @@ get-mujoco:
 	sudo apt-get install unzip
 	rm -rf ~/.mujoco
 	mkdir ~/.mujoco
-	unzip mjpro150.zip -d ~/.mujoco/mjpro150
+	unzip mjpro150.zip -d ~/.mujoco/
 	rm -rf mjpro150.zip
 	echo "now put your `mjkey.txt` file into ~/.mujoco/mjkey.txt"
 	sudo vim ~/.mujoco/mjkey.txt
@@ -39,10 +39,31 @@ install-mujoco-dependencies:
 my-part:
 	sudo apt-get update
 	sudo apt-get install libffi-dev
+	sudo apt-get install -y swig cmake build-essential zlib1g-dev
+	sudo apt-get install libz-dev
+	sudo apt-get install libxrandr-dev
+	sudo apt-get install libexpat-dev
+	sudo apt-get install libexpat1
+	sudo apt-get install libxinerama-dev
+	sudo apt-get install libxi6 libgconf-2-4
+	sudo apt-get install libxcursor-dev
+	# For OpenMPI
+	sudo apt install libopenmpi-dev
 
 install-mujoco:
 # installing with pip simply doesn't work.
 #	sudo pip3 install -U 'mujoco-py==1.50.1.0'
 	rm -rf mujoco-py
 	git clone https://github.com/openai/mujoco-py.git
-	bash -c "cd mujoco-py && source activate gym && python setup.py install" 
+	export PATH=~/anaconda3/bin:$PATH
+	bash -c "cd mujoco-py && source activate gym && pip install -r requirements.txt && python setup.py install"
+	echo 'export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/home/ubuntu/.mujoco/mjpro150/bin' >> ~/.bashrc
+	LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/home/ubuntu/.mujoco/mjpro150/bin
+
+# You might have to run the following commands manually
+export PATH=~/anaconda3/bin:$PATH
+echo 'export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/home/ubuntu/.mujoco/mjpro150/bin' >> ~/.bashrc
+sudo reboot
+
+# # The following line, after MPI is installed
+# sudo update-alternatives --config mpi # https://answers.launchpad.net/dorsal/+question/91701
