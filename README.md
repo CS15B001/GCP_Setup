@@ -1,4 +1,4 @@
-# GCP_Setup
+# AWS_Setup
 Set up for Google Cloud Platform
 
 Follow the exact instructions given below.
