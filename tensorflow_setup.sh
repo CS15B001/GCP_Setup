@@ -16,8 +16,12 @@ wget https://www.roboti.us/download/mjpro150_linux.zip
 sudo mkdir ~/.mujoco
 sudo unzip mjpro150_linux.zip -d ~/.mujoco/
 
-# Assuming mjkey.txt is on ~ folder
-sudo mv mjkey.txt ~/.mujoco/
+# Enter the key
+echo "now put your `mjkey.txt` file into ~/.mujoco/mjkey.txt"
+sudo vim ~/.mujoco/mjkey.txt
+
+# # Assuming mjkey.txt is on ~ folder
+# sudo mv mjkey.txt ~/.mujoco/
 
 # Library Path
 LD_LIBRARY_PATH=$HOME/.mujoco/mjpro150/bin
@@ -45,8 +49,11 @@ sudo chmod +x /usr/local/bin/patchelf
 # https://github.com/openai/mujoco-py/issues/110
 sudo apt-get install libglfw3-dev
 
-# Install mujoco
-sudo pip3 install mujoco_py
+# # Install mujoco
+# sudo pip3 install mujoco_py
+rm -rf mujoco-py
+git clone https://github.com/openai/mujoco-py.git
+bash -c "cd mujoco-py && python setup.py install"
 
 # Required for HER_Improvements
 sudo apt-get install cmake
